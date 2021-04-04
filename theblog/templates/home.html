@@ -2,7 +2,7 @@
     {% block content %}
 <h1>Posts!</h1>
     {% for post in object_list %}
-   <li><a href="{% url 'article-detail' post.pk%}" >{{post.title}}</a> - {{ post.category }}
+   <li><a href="{% url 'article-detail' post.pk%}" >{{post.title}}</a> - <a href="{% url 'category' post.category %}">{{ post.category }}</a>
        - {{post.author.first_name}}
           {{post.author.last_name}} - {{ post.post_date }}
 
