@@ -3,17 +3,23 @@
 {% block title %} {{post.title_tag }} {% endblock %}
     {% block content %}
 
+ <h1>{{ post.title }}</h1>
 
-<h1>{{ post.title }}</h1>
-
-    <small>By: {{post.author.first_name }} {{post.author.last_name }} - {{ post.post_date }}
+    <small>By: {{post.author.first_name }} {{post.author.last_name }} - {{ post.post_date }} <br><br>
         {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
 
-            - <a href="{% url 'update_post' post.pk%}">(Edit)</a>
-            <a href="{% url 'delete_post' post.pk%}">(Delete)</a></small><br>
-        {% else %}
+                - <a href="{% url 'update_post' post.pk%}">(Edit)</a>
+                <a href="{% url 'delete_post' post.pk%}">(Delete)</a></small><br>
+            {% else %}
 
-            <h1>You are not allowed there (And you know it!...)</h1>
+            <div class="alert alert-primary" role="alert">
+                Only user who created the post can delete or edit it!
+            </div>
+
+            {% endif%}
+
+
 
         {% endif %}
 
