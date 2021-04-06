@@ -2,17 +2,23 @@
 {% block title %} Delete Blog Post {% endblock %}
     {% block content %}
 {% if user.is_authenticated %}
-    <h1>Delete Post...</h1>
-    <br><br>
-    <h3>Delete: {{post.title}}</h3>
-    <br>
-    <div class="form-group">
-        <form action="" method="post">
-         {% csrf_token %}
-            <strong>Are you sure?!</strong><br><br>
-                <button class="btn btn-secondary">Delete Post</button>
-        </form>
-    </div>
+    {% if user.id == post.author.id %}
+        <h1>Delete Post...</h1>
+        <br><br>
+        <h3>Delete: {{post.title}}</h3>
+        <br>
+        <div class="form-group">
+            <form action="" method="post">
+             {% csrf_token %}
+                <strong>Are you sure?!</strong><br><br>
+                    <button class="btn btn-secondary">Delete Post</button>
+            </form>
+        </div>
+{% else %}
+       <div class="alert alert-primary" role="alert">
+                Only user who created the post can delete or edit it!
+            </div>
+{% endif %}
 {% else %}
 
     <h1>You are not allowed there (And you know it!...)</h1>
