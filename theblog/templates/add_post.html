@@ -12,6 +12,10 @@
                 <button class="btn btn-secondary">Post</button>
         </form>
     </div>
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("rokas").placeholder = name;
+    </script>
 {% else %}
 
     <h1>You are not allowed there (And you know it!...)</h1>
