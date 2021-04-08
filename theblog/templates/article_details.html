@@ -74,8 +74,24 @@
             {{post.author.first_name }}
             {{post.author.last_name }}
         </h5>
+          <p class="small text-muted">
+              {% if post.author.profile.website_url %}
+              <a href="{{ post.author.profile.website_url }}">Website </a>
+              {% endif %}
+              {% if post.author.profile.facebook_url %}
+              <a href="{{ post.author.profile.facebook_url }}">| Facebook </a>
+              {% endif %}
+              {% if post.author.profile.twitter %}
+              <a href="{{ post.author.profile.twitter_url }}">| Twitter </a>
+              {% endif %}
+              {% if post.author.profile.instagram_url %}
+              <a href="{{ post.author.profile.instagram_url }}">| Instagram </a>
+              {% endif%}
+              {% if post.author.profile.pinterest_url %}
+              <a href="{{ post.author.profile.pinterest_url }}">| Pinterest </a>
+              {% endif %}
+            </p>
         <p class="card-text">{{ post.author.profile.bio }}</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
   </div>
