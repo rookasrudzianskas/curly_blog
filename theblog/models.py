@@ -4,6 +4,7 @@ from django.urls import reverse
 from datetime import datetime, date
 from ckeditor.fields import RichTextField
 
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -14,6 +15,14 @@ class Category(models.Model):
     def get_absolute_url(self):
         # return reverse('article-detail', args=(str(self.id)))
         return reverse('home')
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+
+    def __str__(self):
+        return str(self.user)
 
 
 class Post(models.Model):
