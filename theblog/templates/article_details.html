@@ -23,7 +23,7 @@
         <hr>
         <br>
         {% if post.header_image %}
-            <img src="{{ post.header_image.url }}" alt="">
+            <img src="{{ post.header_image.url }}" class="border border-primary rounded-bottom" width="1000" height="400" alt="">
             <br><br>
         {% endif %}
         {{post.body|safe}}
@@ -61,7 +61,25 @@
 
             {% endif %}
         </form>
+<br><br>
 
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-2 position-relative">
+      <img src="{{ post.author.profile.profile_pic.url }}" width="90" height="90" class="rounded-circle position-absolute top-50 start-50 translate-middle" alt="...">
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">
+            {{post.author.first_name }}
+            {{post.author.last_name }}
+        </h5>
+        <p class="card-text">{{ post.author.profile.bio }}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
 
     {% endblock %}
 
