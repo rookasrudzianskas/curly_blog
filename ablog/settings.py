@@ -1,5 +1,6 @@
 import os.path
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.conf.global_settings import STATICFILES_DIRS
