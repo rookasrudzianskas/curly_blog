@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} {{post.title_tag }} {% endblock %}
     {% block content %}
 
@@ -66,7 +66,14 @@
 <div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-2 position-relative">
+        {% if post.author.profile.profile_pic %}
       <img src="{{ post.author.profile.profile_pic.url }}" width="90" height="90" class="rounded-circle position-absolute top-50 start-50 translate-middle" alt="...">
+
+        {% else %}
+
+        <img src="{% static 'theblog/images/1.png' %}" width="90" height="90" class="rounded-circle position-absolute top-50 start-50 translate-middle" alt="...">
+
+        {% endif %}
     </div>
     <div class="col-md-10">
       <div class="card-body">
