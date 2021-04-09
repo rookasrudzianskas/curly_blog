@@ -11,6 +11,11 @@ from theblog.models import Profile
 
 
 # Create your views here.
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'registration/edit_profile_page.html'
+    fields = ['bio', 'profile_pic', 'website_url', 'twitter_url', 'instagram_url', 'instagram_url', 'pinterest_url']
+    success_url = reverse_lazy('home')
 
 
 class ShowProfilePageView(DetailView):
