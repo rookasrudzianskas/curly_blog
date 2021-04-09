@@ -1,9 +1,50 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %} Edit user profile {% endblock %}
     {% block content %}
 <h1>User Profile</h1>
 
-{{page_user}}
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-2 position-relative">
+        {% if page_user.profile_pic %}
+      <img src="{{ page_user.profile_pic.url }}" width="90" height="90" class="rounded-circle position-absolute top-50 start-50 translate-middle" alt="...">
+
+        {% else %}
+
+        <img src="{% static 'theblog/images/1.png' %}" width="90" height="90" class="rounded-circle position-absolute top-50 start-50 translate-middle" alt="...">
+
+        {% endif %}
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">
+            {{page_user.user.first_name }}
+            {{page_user.user.last_name }}
+        </h5>
+          <p class="small text-muted">
+              {% if page_user.website_url %}
+              <a href="{{ page_user.website_url }}">Website </a>
+              {% endif %}
+              {% if page_user.facebook_url %}
+              <a href="{{ page_user.facebook_url }}">| Facebook </a>
+              {% endif %}
+              {% if page_user.twitter %}
+              <a href="{{ page_user.twitter_url }}">| Twitter </a>
+              {% endif %}
+              {% if page_user.instagram_url %}
+              <a href="{{ page_user.instagram_url }}">| Instagram </a>
+              {% endif%}
+              {% if page_user.pinterest_url %}
+              <a href="{{ page_user.pinterest_url }}">| Pinterest </a>
+              {% endif %}
+            </p>
+        <p class="card-text">{{ page_user.bio }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 
     {% endblock %}
 
