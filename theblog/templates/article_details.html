@@ -106,6 +106,7 @@
     {% if not post.comments.all %}
         <h3>No comments yet <a href="#">Be first to comment!</a></h3>
     {% else %}
+<a href="{% url 'add_comment' post.pk%}">Add comment</a><br><br>
         {% for comment in post.comments.all %}
             <strong>{{ comment.name }} -
             {{ comment.date_added}}</strong>
@@ -115,7 +116,7 @@
 
 
         {% endfor %}
-<hr>
+<a href="{% url 'add_comment' post.pk%}">Add comment</a>
     {% endif %}
 
     {% endblock %}
