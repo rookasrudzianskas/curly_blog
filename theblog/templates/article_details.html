@@ -28,11 +28,7 @@
         {% endif %}
         {{post.body|safe}}
 
-        <br><br>
-        <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
-        <br><br>
-        <hr>
-        <br>
+<hr>
         <form action="{% url 'like_post'  post.pk%}" method="post">
             {% csrf_token %}
 
@@ -62,6 +58,23 @@
             {% endif %}
         </form>
 <br><br>
+<br><br>
+<hr>
+<h2>Comments...</h2>
+<br>
+    {% if not post.comments.all %}
+        <h3>No comments yet <a href="#">Be first to comment!</a></h3>
+    {% else %}
+        {% for comment in post.comments.all %}
+            <strong>{{ comment.name }} -
+            {{ comment.date_added}}</strong>
+<br>
+            {{ comment.body }}
+<br><br>
+
+        {% endfor %}
+<hr>
+    {% endif %}
 
 <div class="card mb-3">
   <div class="row g-0">
