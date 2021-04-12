@@ -104,7 +104,7 @@
 <h2>Comments...</h2>
 <br>
     {% if not post.comments.all %}
-        <h3>No comments yet <a href="#">Be first to comment!</a></h3>
+        <h6>No comments yet <a href="#">Be first to comment!</a></h6>
     {% else %}
 <a href="{% url 'add_comment' post.pk%}">Add comment</a><br><br>
         {% for comment in post.comments.all %}
