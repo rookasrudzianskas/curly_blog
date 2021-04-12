@@ -55,24 +55,28 @@
                 Profile
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a></li>
+                <li><a class="dropdown-item" href="{% url 'edit_profile'%}">Edit Settings</a></li>
               {% if user.profile.id %}
-              <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page</a>
 
-              <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show Profile Page</a>
+                <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page</a>
 
+                  <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show Profile Page</a>
 
-            {% else %}
-            <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile Page</a>
+              {% else %}
 
+                <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile Page</a>
+
+              {% endif %}
 
 
 
             {% endif %}
 
+
+
               </ul>
         </li>
-
+{% if user.is_authenticated %}
              <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
              </li>
