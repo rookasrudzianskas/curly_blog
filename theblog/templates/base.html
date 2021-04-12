@@ -97,7 +97,13 @@
 
 
       </ul>
-
+        {% if user.is_authenticated%}
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}">{{ user.first_name }} {{ user.last_name }}</a>
+          </li>
+    </ul>
+        {% endif %}
     </div>
   </div>
 </nav>
